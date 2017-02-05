@@ -1,4 +1,4 @@
-URxvt.font: xft:Monaco:size=12
+URxvt.font: xft:Monaco:size=11
 URxvt.scrollBar: false
 
 *background: #002b36
