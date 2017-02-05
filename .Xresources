@@ -1,4 +1,4 @@
-URxvt.font: xft:Canterall:size=10
+URxvt.font: xft:Monaco:size=12
 URxvt.scrollBar: false
 
 *background: #002b36
@@ -7,7 +7,7 @@ URxvt.scrollBar: false
 URxvt.transparent:   true
 URxvt.shading:       25
 
-URxvt.letterSpace: -4
+!! URxvt.letterSpace: -4
 
 !! black dark/light
 *color0: #073642
