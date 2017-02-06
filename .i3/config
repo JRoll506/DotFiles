@@ -65,7 +65,8 @@ set $ws6 6: 
 set $ws7 7: 
 set $ws8 8: 
 set $ws9 9: 
-set $ws10 10: 
+set $ws10 10: 
+
 # switch to workspace
 bindsym Mod1+1 workspace $ws1
 bindsym Mod1+2 workspace $ws2
@@ -152,24 +153,8 @@ bar {
         strip_workspace_numbers yes
 }
 
-#Workspace assignments
-set $primary DVI-D-0
-set $secondary HDMI-0
-workspace "$ws1" output $primary
-workspace "$ws2" output $primary
-workspace "$ws3" output $primary
-workspace "$ws4" output $secondary
-workspace "$ws5" output $secondary
-workspace "$ws6" output $secondary
-workspace "$ws7" output $primary
-workspace "$ws8" output $primary
-workspace "$ws9" output $secondary
-workspace "$ws10" output $secondary
-
 #Window assignments
-assign [class="Firefox" window_type=normal] $ws5
-assign [class="Mumble" window_type=normal] $ws4
-assign [class="EVE"] $ws2
+assign [class="Firefox" window_type=normal] $ws10
 
 #Gaps
 gaps inner 5
@@ -179,6 +164,3 @@ gaps outer 2
 
 #Custom Start
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton &
-exec_always sh /home/ryan/.screenlayout/current.layout.sh
-exec mumble
