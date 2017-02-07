@@ -1,0 +1,32 @@
+# Wifi
+rfkill unblock wifi
+ip link set wls1 up
+wpa_supplicant -D n180211,wext -i wls1 -c <(wpa_passphrase "ssid" "wifi_password`")
+# ctrl+alt+f2
+dhcpcd wls1 
+# Partition
+mkfs.ext4 /dev/sdb1
+mount /dev/sdb1 /mnt
+pacstrap /mnt base
+arch-chroot /mnt
+pacman -S vim rfkill wpa_supplicant sudo
+ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock --systohc
+# Uncomment en_US in /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "Firebird" > /etc/hostname
+grub-install --target=i386-pc /dev/sdb
+grub-mkconfig -o /boot/grub/grub.cfg
+useradd -G wheel,disk,rfkill,video,audio,optical,storage,power,users ryan
+passwd ryan
+visudo
+# Uncomment wheel in visudo
+# Lock root
+# Enable multilib
+# Add to pacman.conf
+[archlinuxfr]
+SigLevel = Never
+Server = http://repo.archlinux.fr/$arch
+sudo pacman -S i3lock i3status xorg-xinit rxvt-unicode rofi firefox git nitrogen
+yaourt i3-gaps i3blocks
