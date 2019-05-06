@@ -6,7 +6,7 @@ filetype indent on
 set autoread
 
 " :W sudo saves the file
-"command W w !sudo tee % > /dev/null <- Disable bc fat fingers
+command W w !sudo tee % > /dev/null
 
 " Numbers
 set number

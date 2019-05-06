@@ -4,7 +4,7 @@
 for_window [class="^.*"] border pixel 2
 gaps inner 15
 gaps outer 15
-set $term --no-startup-id urxvt
+set $term --no-startup-id st
 set $mod Mod1
 
 # #---Dropdown Windows---# #
@@ -14,18 +14,19 @@ for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] move position center
 for_window [instance="dropdown"] border pixel 5
 for_window [instance="dropdown"] resize set 850 650
-exec --no-startup-id $term -name "dropdown" -e $SHELL -c 'neofetch;$SHELL -i'
+exec --no-startup-id st -n "dropdown" -e "/bin/bash" -c "neofetch;/bin/bash"
 # Math
 for_window [instance="math"] floating enable
 for_window [instance="math"] move scratchpad
 for_window [instance="math"] move position center
 for_window [instance="math"] border pixel 5
 for_window [instance="math"] resize set 900 350
-exec --no-startup-id $term -name "math" -e $SHELL #<-- -c "command"
+exec --no-startup-id st -n "math" -e "/bin/bash" -c "R --quiet;/bin/bash"
 
 # #---Starting External Scripts---# #
 # Set Background with feh:
-exec --no-startup-id feh --no-fehbg --bg-max --randomize ~/Pictures/wallpapers/*
+set $bg feh --no-fehbg --bg-fill --randomize ~/Pictures/wallpapers/d8fwfxf.png
+exec --no-startup-id $bg
 # Composite manager:
 exec --no-startup-id compton --config /etc/xdg/compton.conf
 
@@ -61,7 +62,7 @@ bindsym $mod+q   kill
 bindsym $mod+w   exec $term
 bindsym $mod+Shift+w  exec --no-startup-id firefox
 
-bindsym $mod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+e exec --no-startup-id ~/.config/scripts/exit.sh
 #bindsym $mod+Shift+e
 
 bindsym $mod+r    restart
@@ -124,7 +125,7 @@ bindsym $mod+Shift+x   exec --no-startup-id i3lock && sleep 1
 #bindsym $mod+v
 #bindsym $mod+Shift+v
 
-#bindsym $mod+b
+bindsym $mod+b  exec --no-startup-id $bg
 #bindsym $mod+Shift+b
 
 #bindsym $mod+n
